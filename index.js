@@ -33,25 +33,6 @@ async function translateText(text, sourceLang, targetLang) {
 }
 
 
-//function importArticle:
-
-//1. takes 2 arguments:
-//  url - endpoint for fetching the resource
-//  tag - HTML node and it's contents that are fetched (in this case article)
-
-//2. declares:
-//  const endpointUrl - the url where the resource is located
-//  let stringToDisplay - an empty string
-
-//3. fetches the resource located at the url
-//  then returns text html from Response object
-//  then returns Document object from text html
-//  then returns NodeList of the given tag from Document object
-//  then iterates over NodeList: 
-//  - on each element walkTheDOM() function is called recursively, stringToDisplay is appended in the process from nodes that are #text and not SCRIPT or STYLE
-//  - at the end stirngToDisplay is returned
-//  then stringToDisplay is passed to renderText() function
-
 function importArticle(url, tag) {
 
         const endpointUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
@@ -81,11 +62,6 @@ function importArticle(url, tag) {
             )
 }
 
-//function walkTheDOM:
-//1. takes 2 arguments:
-//  node - the node to walk
-//  func - callback
-//2. calls function on each deepest nested node
 
 function walkTheDOM(node, func) {
     func(node);
@@ -97,12 +73,6 @@ function walkTheDOM(node, func) {
 }
 
 
-//function renderText
-//1. takes 1 argument:
-//  string - stringto render
-//2. declares:
-//  const renderedText - node used to render string from fetched url
-//3. assigns string to the renderedText's textContent property
 function renderText(string) {
     const renderedText = document.querySelector('.text');
     renderedText.textContent = string;
